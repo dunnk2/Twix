@@ -4,9 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
 using Twix.Data.Models;
 using Twix.Web.Adapters.Adapters;
 using Twix.Web.Adapters.Interfaces;
+using Twix.Web.Models;
 
 namespace Twix.Web.Controllers
 {
@@ -18,16 +20,26 @@ namespace Twix.Web.Controllers
             _adapter = new UserAdapter();
         }
 
+
+
+        [HttpPost]
         public IHttpActionResult Post (User user)
         {
             _adapter.Create(user);
             return Ok();
         }
 
-        public IHttpActionResult Get (string username, string password)
+        public IHttpActionResult Get ()
         {
-            User user = _adapter.GetUser(username, password);
-            return Ok(user);
+            List<UserLoggedInVM> userList = _adapter.GetUserList();
+            return Ok(userList);
         }
+
+        public IHttpActionResult Delete(int id)
+        {
+            _adapter.Delete(id);
+            return Ok();
+        }
+
     }
 }

@@ -18,6 +18,7 @@ namespace Twix.Data.Models
         public string Password { get; set; }
         //list of tweets
         public List<Tweet> Tweets { get; set; }
+       
         //list of followers
         //public List<User> Following { get; set; }
 

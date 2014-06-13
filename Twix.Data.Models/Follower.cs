@@ -12,12 +12,12 @@ namespace Twix.Data.Models
     {
         public int Id { get; set; }
         [Required]
-        public int User1Id { get; set; }
-        [ForeignKey("User1Id")]
-        public User User1 { get; set; }
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
         [Required]
-        public int FollowerId { get; set; }
-        [ForeignKey("FollowerId")]
-        public User theFollower { get; set; }
+        public int UserToFollowId { get; set; }
+        [ForeignKey("UserToFollowId")]
+        public User theFollowed { get; set; }
     }
 }

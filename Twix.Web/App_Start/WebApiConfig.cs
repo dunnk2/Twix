@@ -10,7 +10,7 @@ namespace Twix.Web
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/plain"));
             // Web API configuration and services
 
             // Web API routes
@@ -23,9 +23,21 @@ namespace Twix.Web
             );
 
             config.Routes.MapHttpRoute(
+                name: "FollowerAPI",
+                routeTemplate: "api/v1/follow/{id}",
+                defaults: new { controller = "apiFollower", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "LoginAPI",
+                routeTemplate: "api/v1/login/{id}",
+                defaults: new {controller = "apiLogin", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "TweetAPI",
-                routeTemplate: "api/tweets/{id}",
-                defaults: new {controller = "apiTweet", id = RouteParameter.Optional }
+                routeTemplate: "api/v1/tweets/{id}",
+                defaults: new { controller = "apiTweet", id = RouteParameter.Optional }
             );
 
             config.Routes.MapHttpRoute(

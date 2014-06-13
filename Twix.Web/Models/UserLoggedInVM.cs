@@ -6,8 +6,9 @@ using Twix.Data.Models;
 
 namespace Twix.Web.Models
 {
-    public class UserVM
+    public class UserLoggedInVM
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }

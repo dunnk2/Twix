@@ -1,25 +1,14 @@
-﻿app.controller('LoginController', function($scope, $routeParams, $http){
-    //sign up
-    //get all the values and store them in js object, then send that object in a post ajax call
-
-    $scope.userCreate = function () {
+﻿/// <reference path="../Views/Login.html" />
+app.controller('LoginController', function ($scope, $location, $http) {
+    $scope.LoginAttempt = function () {
         var UserObj = {
-            Username: $scope.Username,
-            Firstname: $scope.Firstname,
-            Lastname: $scope.Lastname,
-            Password: $scope.Password
+            UsernameAttempt: $scope.Username,
+            PasswordAttempt: $scope.Password
         };
-        //alert(UserObj.Username);
-        //alert(UserObj.Firstname);
-        //alert(UserObj.Lastname);
-        //alert(UserObj.Password);
-
-        $http({ method: "POST", url: "/api/v1/User", data: UserObj})
-            .success(function () {
-                $location.path('/');
+        $http({ method: "POST", url: "/api/v1/login", data: UserObj })
+        .success(function (data) {
+            sessionStorage.setItem(0, JSON.stringify(data));
+            $location.path('/user/' + data.Id);
         })
     };
-
-    //
-    //
 });

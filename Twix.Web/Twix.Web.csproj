@@ -126,7 +126,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\Adapters\TweetAdapter.cs" />
     <Compile Include="Adapters\Adapters\UserAdapter.cs" />
+    <Compile Include="Adapters\Interfaces\ITweet.cs" />
     <Compile Include="Adapters\Interfaces\IUser.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -146,6 +148,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\apiFollowerController.cs" />
+    <Compile Include="Controllers\apiLoginController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\apiTweetController.cs" />
     <Compile Include="Controllers\apiUserController.cs" />
@@ -154,20 +158,27 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\FollowerVM.cs" />
-    <Compile Include="Models\UserVM.cs" />
+    <Compile Include="Models\LoginAttempVM.cs" />
+    <Compile Include="Models\UserLoggedInVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\index.html" />
     <Content Include="App\Scripts\HomepageController.js" />
     <Content Include="App\Scripts\LoginController.js" />
+    <Content Include="App\Scripts\SignupController.js" />
     <Content Include="App\Scripts\Main.js" />
+    <Content Include="App\Views\Gate.html" />
     <Content Include="App\Views\Login.html" />
+    <Content Include="App\Views\Signup.html" />
     <Content Include="App\Views\userhome.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\angular-animate.js" />
@@ -211,6 +222,10 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_af-na.js" />
     <Content Include="Scripts\i18n\angular-locale_af-za.js" />

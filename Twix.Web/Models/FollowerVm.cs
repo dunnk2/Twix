@@ -8,7 +8,9 @@ namespace Twix.Web.Models
 {
     public class FollowerVM
     {
-        public string UserName;
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string UserName { get; set; }
         public List<Tweet> Tweets { get; set; }
 
     }
