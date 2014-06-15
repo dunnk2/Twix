@@ -13,5 +13,6 @@ namespace Twix.Web.Models
         public string LastName { get; set; }
         public string UserName { get; set; }
         public List<FollowerVM> Followers { get; set; }
+        public List<Tweet> Tweets { get; set; }
     }
 }

@@ -17,6 +17,12 @@ namespace Twix.Web
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "CreateTweetAPI",
+                routeTemplate: "api/v1/createtweet/{id}",
+                defaults: new { controller = "apiCreateTweet", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "UserAPI",
                 routeTemplate: "api/v1/user/{id}",
                 defaults: new {controller = "apiUser", id = RouteParameter.Optional }

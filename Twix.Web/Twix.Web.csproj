@@ -150,6 +150,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\apiFollowerController.cs" />
     <Compile Include="Controllers\apiLoginController.cs" />
+    <Compile Include="Controllers\apiCreateTweetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\apiTweetController.cs" />
     <Compile Include="Controllers\apiUserController.cs" />
@@ -159,12 +160,14 @@
     </Compile>
     <Compile Include="Models\FollowerVM.cs" />
     <Compile Include="Models\LoginAttempVM.cs" />
+    <Compile Include="Models\UpdatedTweetsVM.cs" />
     <Compile Include="Models\UserLoggedInVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\index.html" />
-    <Content Include="App\Scripts\HomepageController.js" />
+    <Content Include="App\Scripts\CreateTweetController.js" />
+    <Content Include="App\Scripts\HomePageController.js" />
     <Content Include="App\Scripts\LoginController.js" />
     <Content Include="App\Scripts\SignupController.js" />
     <Content Include="App\Scripts\Main.js" />
@@ -177,6 +180,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Twix.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

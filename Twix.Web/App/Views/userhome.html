@@ -1,30 +1,48 @@
-﻿
-<div class="col-md-2" ng-controller="HomepageController">
-    <h3 class="text-center">{{CurrentUser.UserName}}</h3>
-    <button class="btn btn-block btn-warning" ng-click="LogOut();">Log Out</button>
+﻿<div >
+    <div class="col-md-2 well">
+        <h3 class="text-center">{{CurrentUser.UserName}}</h3>
+        <button class="btn btn-block btn-warning" ng-click="LogOut();">Log Out</button>
 
-    <h3 class="text-center">Following</h3>
-    <ul>
-        <li ng-repeat="person in CurrentUser.Followers">{{person.UserName}}</li>
-    </ul>
+        <h3 class="text-center">Following</h3>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="person in CurrentUser.Followers">{{person.UserName}}</li>
+        </ul>
+    </div>
+
+    <div class="col-md-6 col-md-offset-1 well" >
+        <h2 class="text-center">Welcome {{CurrentUser.FirstName}}</h2>
+        <input type="text" class="form-control" ng-model="NewTweet" />
+        <div ng-model="TweetList"></div>
+        <button class="form-control btn btn-block btn-success" ng-click="SendTweet();">
+            Tweet <i class="fa fa-paper-plane"></i>
+        </button>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="tweet in CurrentUser.Tweets">
+                <span class="username">{{tweet.AuthorName}}</span> <br />
+                 {{tweet.message}}
+                <span class="tweetButtons">
+                    <button type="button" class="btn btn-xs" ng-click="
+                    AddLike(tweet)">
+                        <i class="fa fa-thumbs-up"></i>{{tweet.likes}}
+                    </button>
+                    <button type="button" class="btn btn-xs" ng-click="Retweet(tweet)">
+                        <i class="fa fa-retweet"></i>{{tweet.retweets}}
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger" ng-click="DeleteTweet(tweet.Id)">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-2 col-md-offset-1 well">
+        <h3 class="text-center">Follow people</h3>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="tweeter in Tweeters">{{tweeter.UserName}} <button class="btn btn-xs btn-success" ng-click="Follow(tweeter.Id)"><i class="fa fa-arrow-circle-o-up"></i></button> <button class="btn btn-xs btn-danger" ng-click="DeleteUser(tweeter.Id)"><i class="fa fa-times"></i></button></li>
+        </ul>
+    </div>
 </div>
-
-<div class="col-md-6 col-md-offset-1" ng-controller="HomepageController">
-    <h2 class="text-center">Welcome {{CurrentUser.FirstName}}</h2>
-    <input type="text" class="form-control" ng-model="NewTweet"/>
-    <div ng-model="TweetList"></div>
-    <button class="form-control btn btn-block btn-success" ng-click="SendTweet();">Tweet <i class="fa fa-paper-plane"></i></button>
-    <ul>
-        <li ng-repeat="tweet in tweets">{{tweet.message}} <button type="button" class="btn btn-xs btn-danger" ng-click="DeleteTweet(tweet.Id)"><i class="fa fa-times"></i></button></li>
-    </ul>
-</div>
-
-<div class="col-md-2 col-md-offset-1" ng-controller="HomepageController">
-    <h3 class="text-center">Follow people</h3>
-    <ul>
-        <li ng-repeat="tweeter in Tweeters">{{tweeter.UserName}} <button class="btn btn-xs btn-success" ng-click="Follow(tweeter.Id)"><i class="fa fa-arrow-circle-o-up"></i></button> <button class="btn btn-xs btn-danger" ng-click="DeleteUser(tweeter.Id)"><i class="fa fa-times"></i></button></li>
-    </ul>
-</div> 
 
 
 

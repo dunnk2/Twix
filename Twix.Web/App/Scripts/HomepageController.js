@@ -1,25 +1,61 @@
-﻿app.controller('HomepageController', function ($scope, $location, $http) {
+﻿app.controller('HomePageController', function ($scope, $location, $http) {
     $scope.CurrentUser = JSON.parse(sessionStorage[0]);
-    alert("how many times?");
 
-
+    //==============================Tweets=======================================
     $scope.GetTweets = function () {
         $http({ method: "GET", url: "/api/v1/tweets/" + $scope.CurrentUser.Id })
         .success(function (data) {
-            $scope.tweets = data;
+            $scope.CurrentUser.Tweets = data;
         })
     };
-    $scope.GetTweets();
-    
-    $scope.AddFollowTweets = function () {
-        for (var i = 0; i < $scope.CurrentUser.Followers.length; i++) {
-            for (var j = 0; j < $scope.CurrentUser.Followers[i].Tweets.length; j++) {
-                alert($scope.CurrentUser.Followers[i].Tweets[j].message);
-                //$scope.tweets.push($scope.CurrentUser.Followers[i].Tweets[j]);
-            }
-        };
+
+    $scope.SendTweet = function (tweet) {
+        if (tweet == undefined) {
+            tweet = {
+                message: $scope.NewTweet,
+                AuthorId: $scope.CurrentUser.Id,
+                AuthorName: $scope.CurrentUser.UserName,
+                retweets: 0,
+                likes: 0
+            };
+        }
+
+        $http({ method: "POST", url: "/api/v1/createtweet", data: tweet })
+        .success(function (data) {
+            sessionStorage.setItem(sessionStorage.length, JSON.stringify(data));
+            $scope.GetTweets();
+        })
     };
-    $scope.AddFollowTweets();
+
+    $scope.UpdateTweet = function (tweet) {
+        $http({ method: "POST", url: "/api/v1/tweets", data: tweet })
+        .success(function () {
+            $scope.GetTweets();
+        })
+    }
+
+    $scope.AddLike = function (tweet) {
+        tweet.likes++;
+        $scope.UpdateTweet(tweet);
+    }
+
+    $scope.Retweet = function (tweet) {
+        tweet.retweets++;
+        $scope.UpdateTweet(tweet);
+        $scope.SendTweet(tweet);
+    }
+        
+
+    $scope.DeleteTweet = function (id) {
+        $http({ method: "DELETE", url: "/api/v1/tweets/" + id })
+        .success(function () {
+            $scope.GetTweets();
+        })
+    };
+
+
+
+    //===================================Users=====================================
 
     $scope.GetUsers = function () {
         $http({ method: "GET", url: "/api/v1/user/" })
@@ -29,13 +65,6 @@
     };
     $scope.GetUsers();
 
-    $scope.DeleteTweet = function (id) {
-        $http({ method: "DELETE", url: "/api/v1/tweets/" + id })
-        .success(function () {
-            $scope.GetTweets();
-        })
-    };
-
     $scope.DeleteUser = function (id) {
         $http({ method: "DELETE", url: "/api/v1/user/" + id })
         .success(function () {
@@ -43,25 +72,16 @@
         })
     };
 
-    $scope.SendTweet = function () {
-        var tweet = {
-            message: $scope.NewTweet,
-            AuthorId: $scope.CurrentUser.Id
-        };
-
-        $http({ method: "POST", url: "/api/v1/tweets", data: tweet })
-        .success(function (data) {
-            sessionStorage.setItem(sessionStorage.length, JSON.stringify(data));
-            $scope.GetTweets();
-        })
-    };
 
     $scope.Follow = function (PersonToFollowId) {
         var obj = {
             UserId: $scope.CurrentUser.Id,
             UserToFollowId:  PersonToFollowId
         }
-        $http({ method: "POST", url: "/api/v1/follow/", data: obj})
+        $http({ method: "POST", url: "/api/v1/follow/", data: obj })
+            .success(function () {
+                $scope.GetTweets();
+            })
     };
 
     $scope.GetPeopleIFollow = function () {

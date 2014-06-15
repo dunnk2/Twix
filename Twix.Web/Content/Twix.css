@@ -1,0 +1,11 @@
+﻿body {
+}
+
+.tweetButtons {
+    float: right;
+}
+
+.username {
+    font-weight: bold;
+    font-size: small;
+}

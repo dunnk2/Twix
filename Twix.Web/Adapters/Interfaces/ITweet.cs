@@ -11,6 +11,7 @@ namespace Twix.Web.Adapters.Interfaces
     {
         void CreateTweet(Tweet tweet);
         void Delete(int id);
+        void Update(Tweet tweet);
         List<Tweet> GetTweets(int id);
     }
 }

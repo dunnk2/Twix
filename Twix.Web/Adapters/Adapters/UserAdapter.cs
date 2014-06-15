@@ -56,9 +56,14 @@ namespace Twix.Web.Adapters.Adapters
                 }).ToList()
             }).FirstOrDefault();
 
+
+            user.Tweets = db.Tweets.Where(t => t.AuthorId == user.Id).ToList();
             foreach (FollowerVM follower in user.Followers)
             {
                 follower.Tweets = db.Tweets.Where(t => t.AuthorId == follower.Id).ToList();
+                user.Tweets.AddRange(follower.Tweets);
+                user.Tweets.Sort((x, y) => DateTime.Compare(x.Created, y.Created));
+                user.Tweets.Reverse();
             }
 
             return user;

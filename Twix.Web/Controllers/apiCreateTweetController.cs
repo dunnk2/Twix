@@ -10,31 +10,20 @@ using Twix.Web.Adapters.Interfaces;
 
 namespace Twix.Web.Controllers
 {
-    public class apiTweetController : ApiController
+    public class apiCreateTweetController : ApiController
     {
         private ITweet _adapter;
 
-        public apiTweetController()
+        public apiCreateTweetController()
         {
             _adapter = new TweetAdapter();
         }
 
-        public IHttpActionResult Get(int id)
-        {
-            List<Tweet> tweets = _adapter.GetTweets(id);
-            return Ok(tweets);
-        }
-
         public IHttpActionResult Post(Tweet tweet)
         {
-            _adapter.Update(tweet);
+            _adapter.CreateTweet(tweet);
             return Ok();
         }
 
-        public IHttpActionResult Delete(int id)
-        {
-            _adapter.Delete(id);
-            return Ok();
-        }
     }
 }

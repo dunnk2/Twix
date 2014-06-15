@@ -14,7 +14,8 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'Views/Login.html'
     })
     .when('/user/:id', {
-        controller: 'HomepageController',
+        controller: 'HomePageController',
+        //controller: 'CreateTweetController',
         templateUrl: 'Views/userhome.html'
     })
     .otherwise({ redirectTo: '/' });
