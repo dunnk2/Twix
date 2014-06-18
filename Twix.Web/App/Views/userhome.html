@@ -1,4 +1,58 @@
-﻿<div >
+﻿
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="board">
+                <div class="board-inner">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <div class="liner"></div>
+                        <li class="active">
+                            <a href="#home" data-toggle="tab" title="Home">
+                                <span class="round-tabs one">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#profile" data-toggle="tab" title="profile">
+                                <span class="round-tabs two">
+                                    <i class="fa fa-users"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#messages" data-toggle="tab" title="bootsnipp goodies">
+                                <span class="round-tabs three">
+                                    <i class="fa fa-cogs"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#settings" data-toggle="tab" title="blah blah">
+                                <span class="round-tabs four">
+                                    <i class="glyphicon glyphicon-log-out"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#doner" data-toggle="tab" title="completed">
+                                <span class="round-tabs five">
+                                    <i class="glyphicon glyphicon-ok"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
     <div class="col-md-2 well">
         <h3 class="text-center">{{CurrentUser.UserName}}</h3>
         <button class="btn btn-block btn-warning" ng-click="LogOut();">Log Out</button>
@@ -38,8 +92,9 @@
 
     <div class="col-md-2 col-md-offset-1 well">
         <h3 class="text-center">Follow people</h3>
+        <input ng-model="FollowSearch" type="text" />
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="tweeter in Tweeters">{{tweeter.UserName}} <button class="btn btn-xs btn-success" ng-click="Follow(tweeter.Id)"><i class="fa fa-arrow-circle-o-up"></i></button> <button class="btn btn-xs btn-danger" ng-click="DeleteUser(tweeter.Id)"><i class="fa fa-times"></i></button></li>
+            <li class="list-group-item" ng-repeat="tweeter in Tweeters | filter: FollowSearch">{{tweeter.UserName}} <button class="btn btn-xs btn-success" ng-click="Follow(tweeter.Id)"><i class="fa fa-arrow-circle-o-up"></i></button> <button class="btn btn-xs btn-danger" ng-click="DeleteUser(tweeter.Id)"><i class="fa fa-times"></i></button></li>
         </ul>
     </div>
 </div>

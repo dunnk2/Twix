@@ -1,11 +1,14 @@
 ﻿
-
-<div class="col-md-4 col-md-offset-4" ng-controller="SignupController">
-    <h2>Sign Up</h2>
-    Username: <input type="text" ng-model="Username" /> <br />
-    First name: <input type="text" ng-model="Firstname" /> <br />
-    Last Name: <input type="text" ng-model="Lastname" /> <br />
-    Password: <input type="text" ng-model="Password" /> <br />
-    <input type="submit" value="Create User" ng-click="userCreate();" />
-    <a href="/App/index.html#/"><input type="button" value="Return to Welcome" /></a>
+<div class="container">
+    <form role="form">
+        <div class="col-md-4 col-md-offset-4 well" ng-controller="SignupController">
+            <h2 class="fa-header text-center">Sign Up</h2>
+            Username: <input type="text" ng-model="Username" /> <br />
+            First name: <input type="text" ng-model="Firstname" /> <br />
+            Last Name: <input type="text" ng-model="Lastname" /> <br />
+            Password: <input type="text" ng-model="Password" /> <br />
+            <input type="submit" value="Create User" ng-click="userCreate();" />
+            <a href="/App/index.html#/"><input type="button" value="Return to Welcome" /></a>
+        </div>
+    </form>
 </div>

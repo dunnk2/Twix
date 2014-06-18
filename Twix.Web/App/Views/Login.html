@@ -1,8 +1,16 @@
 ﻿
-<div class="col-md-4 col-md-offset-4" ng-controller="LoginController">
-    <h2>Log In</h2>
-    Username: <input type="text" ng-model="Username"/> <br />
-    Password: <input type="text" ng-model="Password" /> <br />
-    <input type="submit" value="Log In" ng-click="LoginAttempt();" />
-    <a href="/App/index.html#/"><input type="button" value="Return to Welcome" /></a>
+<div class="container">
+    <form role="form">
+        <div class="col-md-4 col-md-offset-4 well form-group " ng-controller="LoginController">
+            <h2 class="fa-header text-center">Log In</h2>
+            <label for="LoginUsername">User Name</label>
+            <input type="text" id="LoginUsername" class="form-control" ng-model="Username" />
+            <label for="LoginPassword">Password</label>
+            <input type="text" class="form-control" id="LoginPassword" ng-model="Password" /> 
+            <br />
+            <button type="submit" class="btn btn-default form-control" value="Log In" ng-click="LoginAttempt();" >Log In</button>
+            <br />
+            <a href="/App/index.html#/"><input type="button" class="btn btn-default form-control" value="Return to Welcome" /></a>
+        </div>
+    </form>
 </div>
